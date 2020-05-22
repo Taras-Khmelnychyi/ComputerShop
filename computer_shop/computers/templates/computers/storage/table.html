@@ -1,0 +1,45 @@
+{% extends 'computers/base.html' %}
+
+{% block content %}
+<div class="row justify-content-right">
+        <div class="card card-body">
+            <a class="btn btn-success w-25" href="{% url 'create_storage'%}">Create Storage</a>
+        </div>
+</div>
+<div class="row justify-content-center">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Capacity</th>
+                <th scope="col">Type</th>
+                <th scope="col">Cache</th>
+                <th scope="col">Form Factor</th>
+                <th scope="col">Interface</th>
+                <th scope="col">Price</th>
+                <th scope="col">Update</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for storage in storages %}
+            <tr>
+                <th scope="col">{{ storage.name }}</th>
+                <th scope="col">{{ storage.capacity }}</th>
+                <th scope="col">{{ storage.type }}</th>
+                <th scope="col">{{ storage.cache }}</th>
+                <th scope="col">{{ storage.form_factor }}</th>
+                <th scope="col">{{ storage.interface }}</th>
+                <th scope="col">{{ storage.price }}</th>
+                <th scope="col">
+                    <a class="btn btn-warning" href="{% url 'update_storage' storage.id %}">Update</a>
+                </th>
+                <th scope="col">
+                    <a class="btn btn-danger" href="{% url 'delete_storage' storage.id %}">Delete</a>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

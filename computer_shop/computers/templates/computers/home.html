@@ -1,0 +1,40 @@
+{% extends 'computers/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block container %}
+container-fluid
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-3 my-2">
+    <div class="card">
+      <div class="card-body">
+        <form action="" method="get">
+          {{ my_filter.form|crispy }}
+          <input class="btn btn-primary" type="submit" value="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="row">
+    {% for computer in computers %}
+      <div class="col-sm-4 my-2">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ computer.name }}</h5>
+            <hr>
+            <p class="card-text">{{ computer.cpu }}</p>
+            <p class="card-text">{{ computer.video_card.chipset }}</p>
+            <p class="card-text">Price: {{ computer.price }}$</p>
+            <a href="{% url 'computer' computer.id %}" class="btn btn-primary stretched-link">Детальніше</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+      </div>
+</div>
+</div>
+{% endblock %}

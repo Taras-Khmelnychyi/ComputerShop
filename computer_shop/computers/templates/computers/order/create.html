@@ -1,0 +1,17 @@
+{% extends 'computers/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="card card-body">
+    <h5>Ви оформлюєте замовлення на вибраний комп'ютер "{{ computer }} ({{ computer.cpu }}, {{ computer.video_card }})".</h5>
+    <hr>
+    <p>Ваша ціна: <b>{{computer.price}}$</b></p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input class="btn btn-success" type="submit" name="Submit" value="Buy">
+        <a class="btn btn-warning" href="{% url 'computer' computer.id %}">Cancel</a>
+    </form>
+</div>
+{% endblock %}

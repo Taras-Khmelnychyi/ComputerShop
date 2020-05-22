@@ -1,0 +1,43 @@
+{% extends 'computers/base.html' %}
+
+{% block content %}
+<div class="row justify-content-right">
+        <div class="card card-body">
+            <a class="btn btn-success w-25" href="{% url 'create_video_card'%}">Create Video Card</a>
+        </div>
+</div>
+<div class="row justify-content-center">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Chipset</th>
+                <th scope="col">Memory</th>
+                <th scope="col">Core Clock</th>
+                <th scope="col">Interface</th>
+                <th scope="col">Price</th>
+                <th scope="col">Update</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for video_card in video_cards %}
+            <tr>
+                <th scope="col">{{ video_card.name }}</th>
+                <th scope="col">{{ video_card.chipset }}</th>
+                <th scope="col">{{ video_card.memory }}</th>
+                <th scope="col">{{ video_card.core_clock }} MHz</th>
+                <th scope="col">{{ video_card.interface }}</th>
+                <th scope="col">{{ video_card.price }}</th>
+                <th scope="col">
+                    <a class="btn btn-warning" href="{% url 'update_video_card' video_card.id %}">Update</a>
+                </th>
+                <th scope="col">
+                    <a class="btn btn-danger" href="{% url 'delete_video_card' video_card.id %}">Delete</a>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

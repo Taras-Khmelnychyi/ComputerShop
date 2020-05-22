@@ -1,0 +1,33 @@
+<div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Готові ПК</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">Ваш профіль</a>
+        </li>
+        {% if request.user.is_staff %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Категорії
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'cpu_list' %}">CPU</a>
+                <a class="dropdown-item" href="{% url 'cpu_cooler_list' %}">CPU Coolers</a>
+                <a class="dropdown-item" href="{% url 'motherboard_list' %}">Motherboards</a>
+                <a class="dropdown-item" href="{% url 'memory_list' %}">Memory</a>
+                <a class="dropdown-item" href="{% url 'storage_list' %}">Storage</a>
+                <a class="dropdown-item" href="{% url 'video_card_list' %}">Video Cards</a>
+                <a class="dropdown-item" href="{% url 'power_supply_list' %}">Power Supply</a>
+                <a class="dropdown-item" href="{% url 'case_list' %}">Cases</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'create_computer' %}">Створити ПК</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'order_list' %}">Замовлення</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>

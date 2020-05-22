@@ -1,0 +1,47 @@
+{% extends 'computers/base.html' %}
+
+{% block content %}
+<div class="row justify-content-right">
+        <div class="card card-body">
+            <a class="btn btn-success w-25" href="{% url 'create_case'%}">Create Case</a>
+        </div>
+</div>
+<div class="row justify-content-center">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Color</th>
+                <th scope="col">Power Supply</th>
+                <th scope="col">Side Panel Window</th>
+                <th scope="col">External 5.25" bays</th>
+                <th scope="col">External 3.5" bays</th>
+                <th scope="col">Price</th>
+                <th scope="col">Update</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for case in cases %}
+            <tr>
+                <th scope="col">{{ case.name }}</th>
+                <th scope="col">{{ case.type }}</th>
+                <th scope="col">{{ case.color }}</th>
+                <th scope="col">{{ case.power_supply }}</th>
+                <th scope="col">{{ case.side_panel_window }}</th>
+                <th scope="col">{{ case.external_5_25_bays }}</th>
+                <th scope="col">{{ case.external_3_5_bays }}</th>
+                <th scope="col">{{ case.price }}</th>
+                <th scope="col">
+                    <a class="btn btn-warning" href="{% url 'update_case' case.id %}">Update</a>
+                </th>
+                <th scope="col">
+                    <a class="btn btn-danger" href="{% url 'delete_case' case.id %}">Delete</a>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

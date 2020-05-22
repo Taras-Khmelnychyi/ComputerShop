@@ -1,0 +1,43 @@
+{% extends 'computers/base.html' %}
+
+{% block content %}
+<div class="row justify-content-right">
+        <div class="card card-body">
+            <a class="btn btn-success w-25" href="{% url 'create_cpu'%}">Create Cpu</a>
+        </div>
+</div>
+<div class="row justify-content-center">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Series</th>
+                <th scope="col">Socket</th>
+                <th scope="col">Cores</th>
+                <th scope="col">Core Clock</th>
+                <th scope="col">Price</th>
+                <th scope="col">Update</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cpu in cpus %}
+            <tr>
+                <th scope="col">{{ cpu.name }}</th>
+                <th scope="col">{{ cpu.series }}</th>
+                <th scope="col">{{ cpu.socket }}</th>
+                <th scope="col">{{ cpu.core_count }}</th>
+                <th scope="col">{{ cpu.core_clock }} GHz</th>
+                <th scope="col">{{ cpu.price }}</th>
+                <th scope="col">
+                    <a class="btn btn-warning" href="{% url 'update_cpu' cpu.id %}">Update</a>
+                </th>
+                <th scope="col">
+                    <a class="btn btn-danger" href="{% url 'delete_cpu' cpu.id %}">Delete</a>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

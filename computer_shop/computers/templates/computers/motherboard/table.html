@@ -1,0 +1,43 @@
+{% extends 'computers/base.html' %}
+
+{% block content %}
+<div class="row justify-content-right">
+        <div class="card card-body">
+            <a class="btn btn-success w-25" href="{% url 'create_motherboard'%}">Create Motherboard</a>
+        </div>
+</div>
+<div class="row justify-content-center">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Socket</th>
+                <th scope="col">Form Factor</th>
+                <th scope="col">Max Memory</th>
+                <th scope="col">Memory Slots</th>
+                <th scope="col">Price</th>
+                <th scope="col">Update</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for motherboard in motherboards %}
+            <tr>
+                <th scope="col">{{ motherboard.name }}</th>
+                <th scope="col">{{ motherboard.socket }}</th>
+                <th scope="col">{{ motherboard.form_factor }}</th>
+                <th scope="col">{{ motherboard.memory_max }}</th>
+                <th scope="col">{{ motherboard.memory_slots }}</th>
+                <th scope="col">{{ motherboard.price }}</th>
+                <th scope="col">
+                    <a class="btn btn-warning" href="{% url 'update_motherboard' motherboard.id %}">Update</a>
+                </th>
+                <th scope="col">
+                    <a class="btn btn-danger" href="{% url 'delete_motherboard' motherboard.id %}">Delete</a>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
