@@ -70,7 +70,7 @@ def place_order(request, computer_id):
             # print(form.cleaned_data['computer'])
             return redirect('home')
 
-    context = {'form': form,'computer': _computer}
+    context = {'form': form, 'computer': _computer}
 
     return render(request, 'computers/order/create.html', context)
 

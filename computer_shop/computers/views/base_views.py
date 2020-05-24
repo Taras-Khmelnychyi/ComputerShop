@@ -24,9 +24,8 @@ def register_user(request):
             group.user_set.add(user)
 
             full_name = request.POST.get('full_name')
-            address = request.POST.get('address')
 
-            customer = CustomerForm({'user': user, 'full_name': full_name, 'address': address})
+            customer = CustomerForm({'user': user, 'full_name': full_name})
             if customer.is_valid():
                 customer.save()
 
